@@ -1,0 +1,22 @@
+{
+    "name": "vlabs/google-map",
+    "license": "proprietary",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "Vlabs\\GoogleMapBundle\\": ""
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "symfony/config": ">=3.0.0",
+        "symfony/dependency-injection": ">=3.0.0",
+        "symfony/http-kernel": ">=3.0.0",
+        "friendsofsymfony/rest-bundle": ">=2.1.0",
+        "jms/serializer-bundle": ">=1.1.0",
+        "nelmio/api-doc-bundle": ">=3.2",
+        "guzzlehttp/guzzle": ">=6.2.0",
+        "friendsofsymfony/jsrouting-bundle": ">=1.6.0",
+        "tbbc/rest-util-bundle": ">=1.0"
+    }
+}
