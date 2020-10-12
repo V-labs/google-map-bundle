@@ -10,12 +10,12 @@ namespace Vlabs\GoogleMapBundle\VO;
 class LatLngVO
 {
     /**
-     * @var string|null
+     * @var float|null
      */
     private $lat;
 
     /**
-     * @var string|null
+     * @var float|null
      */
     private $lng;
 
@@ -26,23 +26,34 @@ class LatLngVO
      */
     public function __construct(?string $lat, ?string $lng)
     {
-        $this->lat = is_null($lat) ? null : $lat;
-        $this->lng = is_null($lng) ? null : $lng;
+        $this->lat = is_null($lat) ? null : (float)$lat;
+        $this->lng = is_null($lng) ? null : (float)$lng;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getLat(): ?string
+    public function getLat(): ?float
     {
         return $this->lat;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getLng(): ?string
+    public function getLng(): ?float
     {
         return $this->lng;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return (
+            is_null($this->lat)
+            && is_null($this->lng)
+        );
     }
 }

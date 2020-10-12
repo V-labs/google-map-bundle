@@ -1,9 +1,4 @@
 Vlabs\GoogleMapBundle\Entity\AddressComponent:
-    constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            value: [ address, shortName, longName ]
-            errorPath: address
-            message: vlabs_google_map.address_component.duplicated
     properties:
         shortName:
             - NotBlank: ~

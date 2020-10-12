@@ -1,5 +1,5 @@
 {
-    "name": "vlabs/google-map-bundle",
+    "name": "vlabs/google-map-bundle-local",
     "license": "proprietary",
     "type": "symfony-bundle",
     "autoload": {

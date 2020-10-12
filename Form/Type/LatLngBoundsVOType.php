@@ -2,9 +2,12 @@
 
 namespace Vlabs\GoogleMapBundle\Form\Type;
 
+use RecursiveIterator;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -26,10 +29,18 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('south', TextType::class)
-            ->add('west', TextType::class)
-            ->add('north', TextType::class)
-            ->add('east', TextType::class)
+            ->add('south', NumberType::class,[
+                'scale' => 7
+            ])
+            ->add('west', NumberType::class,[
+                'scale' => 7
+            ])
+            ->add('north', NumberType::class,[
+                'scale' => 7
+            ])
+            ->add('east', NumberType::class,[
+                'scale' => 7
+            ])
         ;
 
         $builder->setDataMapper($this);
@@ -57,8 +68,8 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
     }
 
     /**
-     * @param $forms
-     * @param $data
+     * @param RecursiveIterator $forms
+     * @param LatLngBoundsVO|null $data
      */
     public function mapFormsToData($forms, &$data)
     {
@@ -69,6 +80,10 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
             $forms['north']->getData(),
             $forms['east']->getData()
         );
+
+        if($data->isEmpty()){
+            $data = null;
+        }
     }
 
     /**

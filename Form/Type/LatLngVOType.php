@@ -5,6 +5,7 @@ namespace Vlabs\GoogleMapBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,11 +25,13 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
     {
 
         $builder
-            ->add('lat', TextType::class, [
-                'empty_data' => null
+            ->add('lat', NumberType::class, [
+                'empty_data' => null,
+                'scale' => 7
             ])
-            ->add('lng', TextType::class, [
-                'empty_data' => null
+            ->add('lng', NumberType::class, [
+                'empty_data' => null,
+                'scale' => 7
             ])
         ;
 
@@ -42,7 +45,7 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
     public function mapDataToForms($data, $forms)
     {
         if (null === $data) {
-            return;
+            return null;
         }
 
         if(!$data instanceof LatLngVO){
@@ -65,6 +68,10 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
             $forms['lat']->getData(),
             $forms['lng']->getData()
         );
+
+        if($data->isEmpty()){
+            $data = null;
+        }
     }
 
     /**

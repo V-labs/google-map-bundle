@@ -9,22 +9,22 @@ namespace Vlabs\GoogleMapBundle\VO;
 class LatLngBoundsVO
 {
     /**
-     * @var string|null
+     * @var float|null
      */
     private $south;
 
     /**
-     * @var string|null
+     * @var float|null
      */
     private $west;
 
     /**
-     * @var string|null
+     * @var float|null
      */
     private $north;
 
     /**
-     * @var string|null
+     * @var float|null
      */
     private $east;
 
@@ -37,41 +37,54 @@ class LatLngBoundsVO
      */
     public function __construct(?string $south, ?string $west, ?string $north, ?string $east)
     {
-        $this->south = is_null($south) ? null : $south;
-        $this->west  = is_null($west)  ? null : $west;
-        $this->north = is_null($north) ? null : $north;
-        $this->east  = is_null($east)  ? null : $east;
+        $this->south = is_null($south) ? null : (float)$south;
+        $this->west  = is_null($west)  ? null : (float)$west;
+        $this->north = is_null($north) ? null : (float)$north;
+        $this->east  = is_null($east)  ? null : (float)$east;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getSouth(): ?string
+    public function getSouth(): ?float
     {
         return $this->south;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getWest(): ?string
+    public function getWest(): ?float
     {
         return $this->west;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getNorth(): ?string
+    public function getNorth(): ?float
     {
         return $this->north;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getEast(): ?string
+    public function getEast(): ?float
     {
         return $this->east;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return (
+            is_null($this->south)
+            && is_null($this->west)
+            && is_null($this->north)
+            && is_null($this->east)
+        );
     }
 }

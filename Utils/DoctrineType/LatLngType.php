@@ -4,6 +4,7 @@ namespace Vlabs\GoogleMapBundle\Utils\DoctrineType;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use function is_null;
 use Vlabs\GoogleMapBundle\VlabsGoogleMapBundle;
 use Vlabs\GoogleMapBundle\VO\LatLngVO;
 
@@ -29,6 +30,8 @@ class LatLngType extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
+        if(is_null($value)) return null;
+
         list($latitude, $longitude) = sscanf($value, '%f %f');
 
         return new LatLngVO($latitude, $longitude);
