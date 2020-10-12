@@ -29,7 +29,7 @@ class LatLngType extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        list($longitude, $latitude) = sscanf($value, '%f %f');
+        list($latitude, $longitude) = sscanf($value, '%f %f');
 
         return new LatLngVO($latitude, $longitude);
     }
