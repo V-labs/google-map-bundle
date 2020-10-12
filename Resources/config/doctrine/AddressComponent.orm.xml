@@ -4,18 +4,27 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Vlabs\GoogleMapBundle\Entity\AddressComponent">
+    <entity name="Vlabs\GoogleMapBundle\Entity\AddressComponent">
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
             <options>
                 <option name="unsigned">true</option>
             </options>
         </id>
-        <field name="type" column="type" type="string" nullable="false" />
         <field name="longName" column="long_name" type="string" nullable="true" />
         <field name="shortName" column="short_name" type="string" nullable="true" />
         <many-to-one field="address" target-entity="Vlabs\GoogleMapBundle\Entity\Address" inversed-by="addressComponents">
             <join-column name="address_id" referenced-column-name="id" />
         </many-to-one>
-    </mapped-superclass>
+        <one-to-many
+                field="addressComponentTypes"
+                target-entity="Vlabs\GoogleMapBundle\Entity\AddressComponentType"
+                mapped-by="addressComponent"
+                orphan-removal="true"
+        >
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+    </entity>
 </doctrine-mapping>

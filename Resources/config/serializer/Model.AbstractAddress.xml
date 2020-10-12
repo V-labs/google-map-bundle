@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="Vlabs\GoogleMapBundle\Model\AbstractAddress" exclusion-policy="ALL">
+        <property name="placeId" serialized-name="place_id" type="string" expose="true" groups="address,full_address" />
+        <property name="formattedAddress" type="string" expose="true" groups="address,full_address" />
+        <property name="types" type="array" expose="true" groups="address,full_address" />
+        <property
+                name="geometry"
+                expose="true"
+                accessor-getter="getGeometry"
+                accessor-setter="setGeometry"
+                groups="address__address_geometry,full_address"
+        >
+            <type><![CDATA[Vlabs\GoogleMapBundle\Model\AbstractAddressGeometry]]></type>
+        </property>
+        <property
+                name="addressComponents"
+                accessor-getter="getAddressComponents"
+                accessor-setter="setAddressComponents"
+                expose="true"
+                groups="address__address_components,full_address"
+        >
+            <type><![CDATA[ArrayCollection<Vlabs\GoogleMapBundle\Model\AbstractAddressComponent>]]></type>
+        </property>
+    </class>
+</serializer>

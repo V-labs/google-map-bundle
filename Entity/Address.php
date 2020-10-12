@@ -2,8 +2,11 @@
 
 namespace Vlabs\GoogleMapBundle\Entity;
 
+use Vlabs\GoogleMapBundle\Model\AbstractAddress;
+use Vlabs\GoogleMapBundle\Model\AddressInterface;
+
 /**
- * Class Address
+ * Class DeprecatedAddress
  * @package Vlabs\GoogleMapBundle\Entity
  */
 class Address extends AbstractAddress implements AddressInterface

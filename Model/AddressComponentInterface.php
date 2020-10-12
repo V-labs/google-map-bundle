@@ -1,12 +1,13 @@
 <?php
 
-namespace Vlabs\GoogleMapBundle\Entity;
+namespace Vlabs\GoogleMapBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Interface AddressComponentInterface
- * @package Vlabs\GoogleMapBundle\Entity
+ * @package Vlabs\GoogleMapBundle\Model
  */
 interface AddressComponentInterface
 {
@@ -47,14 +48,31 @@ interface AddressComponentInterface
     public function setShortName(?string $shortName): AddressComponentInterface;
 
     /**
-     * @return string|null
+     * @return Collection|AddressComponentTypeInterface[]
      */
-    public function getType(): ?string;
+    public function getAddressComponentTypes();
 
     /**
-     * @param string|null $type
+     * @return Collection|string[]
+     */
+    public function getTypes();
+
+    /**
+     * @param string $name
      *
      * @return AddressComponentInterface
      */
-    public function setType(?string $type): AddressComponentInterface;
+    public function addType(string $name): AddressComponentInterface;
+
+    /**
+     * @param string $name
+     *
+     * @return AbstractAddressComponent
+     */
+    public function removeType(string $name): AddressComponentInterface;
+
+    /**
+     * @param Collection|string[] $names
+     */
+    public function setTypes($names);
 }

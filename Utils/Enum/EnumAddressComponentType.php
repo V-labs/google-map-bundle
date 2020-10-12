@@ -3,11 +3,11 @@
 namespace Vlabs\GoogleMapBundle\Utils\Enum;
 
 /**
- * Class EnumAddressComponentTyp
+ * Class EnumAddressComponentType
  * @package Vlabs\GoogleMapBundle\Utils\Enum
  * @see https://developers.google.com/places/web-service/supported_types
  */
-class EnumAddressComponentTyp
+class EnumAddressComponentType
 {
     CONST TABLE_1 = [
         'accounting', 'airport', 'amusement_park', 'aquarium', 'art_gallery', 'atm', 'bakery', 'bank', 'bar',

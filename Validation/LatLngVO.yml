@@ -1,0 +1,6 @@
+Vlabs\GoogleMapBundle\VO\LatLngVO:
+    properties:
+        lat:
+            - NotBlank: ~
+        lng:
+            - NotBlank: ~

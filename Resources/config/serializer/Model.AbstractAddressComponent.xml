@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="Vlabs\GoogleMapBundle\Model\AbstractAddressComponent" exclusion-policy="ALL">
+        <property name="address" expose="true" type="string" groups="address_component__address">
+            <type><![CDATA[Vlabs\GoogleMapBundle\Model\AbstractAddress]]></type>
+        </property>
+        <property name="longName" expose="true" type="string" groups="address_component,full_address" />
+        <property name="shortName" expose="true" type="string" groups="address_component,full_address" />
+        <property
+                name="addressComponentTypes"
+                serialized-name="types"
+                accessor-setter="setTypes"
+                expose="true"
+                groups="address_component__types,full_address"
+        >
+            <type><![CDATA[ArrayCollection<string>]]></type>
+        </property>
+    </class>
+</serializer>

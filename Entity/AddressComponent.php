@@ -2,6 +2,9 @@
 
 namespace Vlabs\GoogleMapBundle\Entity;
 
+use Vlabs\GoogleMapBundle\Model\AbstractAddressComponent;
+use Vlabs\GoogleMapBundle\Model\AddressComponentInterface;
+
 /**
  * Class AddressComponent
  * @package Vlabs\GoogleMapBundle\Entity

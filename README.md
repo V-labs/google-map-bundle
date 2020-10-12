@@ -24,3 +24,27 @@ public function registerBundles()
     );
 }
 ```
+
+### Step 3: Enable custom doctrine types
+
+``` yml
+# config/packages/doctrine.yaml
+doctrine:
+    dbal:
+        types:
+            lat_lng:  Vlabs\GoogleMapBundle\Utils\DoctrineType\LatLngType
+            lat_lng_bounds: Vlabs\GoogleMapBundle\Utils\DoctrineType\LatLngBoundsType
+```
+
+### Step 3: Enable jms serializer if needed
+
+``` yml
+# config/packages/jms_serializer.yaml
+jms_serializer:
+    handlers:
+    metadata:
+        directories:
+            address:
+                namespace_prefix: Vlabs\GoogleMapBundle
+                path: "@VlabsGoogleMapBundle/Resources/config/serializer"
+```

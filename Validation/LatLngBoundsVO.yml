@@ -1,0 +1,10 @@
+Vlabs\GoogleMapBundle\VO\LatLngBoundsVO:
+    properties:
+        south:
+            - NotBlank: ~
+        west:
+            - NotBlank: ~
+        north:
+            - NotBlank: ~
+        east:
+            - NotBlank: ~

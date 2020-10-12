@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="Vlabs\GoogleMapBundle\VO\LatLngBoundsVO" exclusion-policy="ALL">
+        <property name="south" expose="true" type="float" groups="address_geometry,full_address" />
+        <property name="west" expose="true" type="float" groups="address_geometry,full_address" />
+        <property name="north" expose="true" type="float" groups="address_geometry,full_address" />
+        <property name="east" expose="true" type="float" groups="address_geometry,full_address" />
+    </class>
+</serializer>

@@ -1,0 +1,10 @@
+Vlabs\GoogleMapBundle\Entity\Address:
+    properties:
+        formattedAddress:
+            - NotBlank: ~
+        addressComponents:
+            - Valid: ~
+            - Count:
+                min: 1
+        geometry:
+            - Valid: ~

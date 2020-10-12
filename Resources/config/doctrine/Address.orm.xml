@@ -4,14 +4,38 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Vlabs\GoogleMapBundle\Entity\Address">
+    <entity
+            name="Vlabs\GoogleMapBundle\Entity\Address"
+            repository-class="Vlabs\GoogleMapBundle\Repository\AddressRepository"
+    >
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
             <options>
                 <option name="unsigned">true</option>
             </options>
         </id>
-        <field name="formatted" column="formatted" type="text" nullable="false" />
-        <one-to-many field="addressComponents" target-entity="Vlabs\GoogleMapBundle\Entity\AddressComponent" mapped-by="address" />
-    </mapped-superclass>
+        <field name="placeId" column="place_id" type="text" nullable="false" />
+        <field name="formattedAddress" column="formatted_address" type="text" nullable="false" />
+        <field name="types" column="types" type="simple_array" nullable="true" />
+        <one-to-many
+                field="addressComponents"
+                target-entity="Vlabs\GoogleMapBundle\Entity\AddressComponent"
+                mapped-by="address"
+                orphan-removal="true"
+        >
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+        <one-to-one
+                field="geometry"
+                target-entity="Vlabs\GoogleMapBundle\Entity\AddressGeometry"
+                mapped-by="address"
+                orphan-removal="true"
+        >
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-one>
+    </entity>
 </doctrine-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <!-- Services -->
+        <service id="vlabs_google_map.service.geocoder" class="Vlabs\GoogleMapBundle\Service\Geocoding\GeocoderService">
+            <argument></argument>
+            <argument></argument>
+        </service>
+        <!-- ######### -->
+
+        <!-- Managers -->
+        <service id="vlabs_google_map.manager.address" class="Vlabs\GoogleMapBundle\Manager\AddressManager" public="true">
+            <argument type="expression">service('doctrine').getRepository('VlabsGoogleMapBundle:Address')</argument>
+        </service>
+        <!-- ######### -->
+
+        <!-- Serializer -->
+        <service id="jms_serializer.lat_lng_bounds_vo_handler" class="Vlabs\GoogleMapBundle\Serializer\Handler\LatLngBoundsHandler" public="true">
+            <tag name="jms_serializer.subscribing_handler" />
+        </service>
+        <service id="vlabs_google_map.serializer_subscriber" class="Vlabs\GoogleMapBundle\Serializer\EventSubscriber\SerializerSubscriber" public="true">
+            <tag name="jms_serializer.event_subscriber" />
+        </service>
+        <!-- ######### -->
+
+    </services>
+</container>

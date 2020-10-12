@@ -1,0 +1,5 @@
+vlabs_google_map:
+    address_component:
+        duplicated: Vous ne pouvez pas avoirs plusieurs composants avec les même valeurs (%duplicated_path%)
+    address_component_type:
+        duplicated: Vous ne pouvez pas avoirs plusieurs fois le même type pour un composant (%duplicated_path%)

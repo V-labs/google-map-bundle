@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Vlabs\GoogleMapBundle\Entity\AddressComponentType">
+        <id name="name" type="string">
+            <generator strategy="NONE" />
+        </id>
+        <id name="addressComponent" association-key="true" />
+
+        <many-to-one field="addressComponent" target-entity="Vlabs\GoogleMapBundle\Entity\AddressComponent" inversed-by="addressComponentTypes">
+            <join-column nullable="false" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="Vlabs\GoogleMapBundle\Model\AbstractAddressGeometry" exclusion-policy="ALL">
+        <property name="address" expose="true" type="string" groups="address_geometry__address">
+            <type><![CDATA[Vlabs\GoogleMapBundle\Model\AbstractAddress]]></type>
+        </property>
+        <property name="locationType" serialized-name="location_type" type="string" expose="true" groups="address,full_address" />
+        <property name="location" expose="true" groups="address_geometry,full_address">
+            <type><![CDATA[Vlabs\GoogleMapBundle\VO\LatLngVO]]></type>
+        </property>
+        <property name="viewport" expose="true" groups="address_geometry,full_address">
+            <type><![CDATA[Vlabs\GoogleMapBundle\VO\LatLngBoundsVO]]></type>
+        </property>
+        <property name="bounds" expose="true" groups="address_geometry,full_address">
+            <type><![CDATA[Vlabs\GoogleMapBundle\VO\LatLngBoundsVO]]></type>
+        </property>
+    </class>
+</serializer>

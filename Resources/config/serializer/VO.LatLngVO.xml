@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="Vlabs\GoogleMapBundle\VO\LatLngVO" exclusion-policy="ALL">
+        <property name="lat" expose="true" type="float" groups="address_geometry,full_address" />
+        <property name="lng" expose="true" type="float" groups="address_geometry,full_address" />
+    </class>
+</serializer>

@@ -1,0 +1,8 @@
+Vlabs\GoogleMapBundle\Entity\AddressGeometry:
+    properties:
+        address:
+            - NotBlank: ~
+        location:
+            - Valid: ~
+        viewport:
+            - Valid: ~

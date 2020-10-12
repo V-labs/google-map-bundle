@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Vlabs\GoogleMapBundle\Entity\AddressGeometry">
+        <id name="address" association-key="true" />
+        <field name="locationType" column="location_type" type="string"  nullable="true" />
+        <field name="location" column="location" type="lat_lng"  nullable="true" />
+        <field name="viewport" column="viewport" type="lat_lng_bounds" nullable="true" />
+        <field name="bounds" column="bounds" type="lat_lng_bounds" nullable="true" />
+        <one-to-one field="address" target-entity="Vlabs\GoogleMapBundle\Entity\Address" inversed-by="geometry" />
+    </entity>
+</doctrine-mapping>
