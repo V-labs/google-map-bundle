@@ -31,7 +31,6 @@ class LatLngBoundsType extends Type
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if(is_null($value)) return null;
-
         list($south, $west, $north, $east) = sscanf($value, '%f %f %f %f');
 
         return new LatLngBoundsVO($south, $west, $north, $east);

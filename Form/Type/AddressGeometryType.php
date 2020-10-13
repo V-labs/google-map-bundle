@@ -75,8 +75,7 @@ class AddressGeometryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => AddressGeometry::class,
-            'empty_data' => null
+            'data_class' => AddressGeometry::class
         ]);
     }
 }
