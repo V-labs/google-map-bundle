@@ -29,11 +29,18 @@ class AddressGeometryType extends AbstractType
     {
         $builder
             ->add('location_type', TextType::class,[
-                'property_path' => 'locationType'
+                'property_path' => 'locationType',
+                'required'      => true
             ])
-            ->add('location', LatLngVOType::class)
-            ->add('viewport', LatLngBoundsVOType::class)
-            ->add('bounds', LatLngBoundsVOType::class)
+            ->add('location', LatLngVOType::class, [
+                'required' => true
+            ])
+            ->add('viewport', LatLngBoundsVOType::class, [
+                'required' => false
+            ])
+            ->add('bounds', LatLngBoundsVOType::class, [
+                'required' => false
+            ])
         ;
 
         $builder->addEventListener(FormEvents::SUBMIT, [$this, 'onPreSubmit']);

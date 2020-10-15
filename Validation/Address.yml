@@ -1,5 +1,7 @@
 Vlabs\GoogleMapBundle\Entity\Address:
     properties:
+        placeId:
+            - NotBlank: ~
         formattedAddress:
             - NotBlank: ~
         addressComponents:

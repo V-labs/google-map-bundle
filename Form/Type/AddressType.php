@@ -23,25 +23,31 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('formatted_address', TextType::class,[
-                'property_path' => 'formattedAddress'
+                'property_path' => 'formattedAddress',
+                'required'      => true
             ])
             ->add('address_components', CollectionType::class, [
                 'entry_type'    => AddressComponentType::class,
                 'property_path' => 'addressComponents',
                 'allow_add'     => true,
                 'allow_delete'  => true,
-                'by_reference'  => false
+                'by_reference'  => false,
+                'required'      => true
             ])
             ->add('place_id', TextType::class,[
-                'property_path' => 'placeId'
+                'property_path' => 'placeId',
+                'required'      => true
             ])
             ->add('types', CollectionType::class,[
                 'entry_type'    => TextType::class,
                 'allow_add'     => true,
                 'allow_delete'  => true,
-                'by_reference'  => true
+                'by_reference'  => true,
+                'required'      => true
             ])
-            ->add('geometry', AddressGeometryType::class)
+            ->add('geometry', AddressGeometryType::class,[
+                'required' => false
+            ])
         ;
     }
 

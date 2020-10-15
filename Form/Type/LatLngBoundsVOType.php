@@ -30,16 +30,24 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
     {
         $builder
             ->add('south', NumberType::class,[
-                'scale' => 7
+                'empty_data' => null,
+                'scale'      => 7,
+                'required'   => true
             ])
             ->add('west', NumberType::class,[
-                'scale' => 7
+                'empty_data' => null,
+                'scale'      => 7,
+                'required'   => true
             ])
             ->add('north', NumberType::class,[
-                'scale' => 7
+                'empty_data' => null,
+                'scale'      => 7,
+                'required'   => true
             ])
             ->add('east', NumberType::class,[
-                'scale' => 7
+                'empty_data' => null,
+                'scale'      => 7,
+                'required'   => true
             ])
         ;
 

@@ -27,11 +27,13 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
         $builder
             ->add('lat', NumberType::class, [
                 'empty_data' => null,
-                'scale' => 7
+                'scale'      => 7,
+                'required'   => true
             ])
             ->add('lng', NumberType::class, [
                 'empty_data' => null,
-                'scale' => 7
+                'scale'      => 7,
+                'required'   => true
             ])
         ;
 

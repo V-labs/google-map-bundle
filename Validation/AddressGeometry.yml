@@ -2,3 +2,5 @@ Vlabs\GoogleMapBundle\Entity\AddressGeometry:
     properties:
         address:
             - NotBlank: ~
+        locationType:
+            - NotBlank: ~
