@@ -1,10 +1,14 @@
 Vlabs\GoogleMapBundle\Entity\AddressComponent:
     properties:
         shortName:
-            - NotBlank: ~
+            - NotBlank:
+                  groups: ['Default', 'Full']
         longName:
-            - NotBlank: ~
+            - NotBlank:
+                  groups: ['Default', 'Full']
         addressComponentTypes:
-            - Valid: ~
+            - Valid:
+                  groups: ['Default','Full']
             - Count:
                 min: 1
+                groups: ['Default','Full']

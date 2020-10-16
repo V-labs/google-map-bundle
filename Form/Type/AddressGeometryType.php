@@ -28,7 +28,7 @@ class AddressGeometryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('location_type', TextType::class,[
+            ->add('location_type', TextType::class, [
                 'property_path' => 'locationType',
                 'required'      => true
             ])
@@ -42,38 +42,6 @@ class AddressGeometryType extends AbstractType
                 'required' => false
             ])
         ;
-
-        $builder->addEventListener(FormEvents::SUBMIT, [$this, 'onPreSubmit']);
-    }
-
-    public function onPreSubmit(FormEvent $event)
-    {
-        /** @var FormInterface $form */
-        $form = $event->getForm();
-        /** @var AddressGeometryInterface|null $data */
-        $data = $event->getData();
-
-        if($data instanceof AddressGeometryInterface){
-            $location = $data->getLocation();
-            if($location instanceof LatLngVO && $location->isEmpty()){
-                $data->setLocation(null);
-                $form->remove('location');
-            }
-
-            $bounds = $data->getBounds();
-            if($bounds instanceof LatLngBoundsVO && $bounds->isEmpty()){
-                $data->setBounds(null);
-                $form->remove('bounds');
-            }
-
-            $viewport = $data->getViewport();
-            if($viewport instanceof LatLngBoundsVO && $viewport->isEmpty()){
-                $data->setViewport(null);
-                $form->remove('viewport');
-            }
-
-            $event->setData($data);
-        }
     }
 
     /**

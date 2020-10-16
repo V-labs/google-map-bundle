@@ -4,6 +4,8 @@ Vlabs\GoogleMapBundle\Entity\AddressComponentType:
               value: [ addressComponent, name ]
               errorPath: addressComponent
               message: vlabs_google_map.address_component_type.duplicated
+              groups: ['Default', 'Full']
     properties:
         name:
-            - NotBlank: ~
+            - NotBlank:
+                  groups: ['Default', 'Full']

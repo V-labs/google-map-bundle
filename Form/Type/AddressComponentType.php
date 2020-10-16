@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Vlabs\GoogleMapBundle\Entity\AddressComponent;
 
 /**
@@ -23,16 +24,19 @@ class AddressComponentType extends AbstractType
     {
         $builder
             ->add('long_name', TextType::class, [
-                'property_path' => 'longName'
+                'property_path' => 'longName',
+                'required'      => true
             ])
             ->add('short_name', TextType::class, [
-                'property_path' => 'shortName'
+                'property_path' => 'shortName',
+                'required'      => true
             ])
             ->add('types', CollectionType::class, [
                 'entry_type'   => TextType::class,
                 'allow_add'    => true,
                 'allow_delete' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'required'     => true
             ])
         ;
     }

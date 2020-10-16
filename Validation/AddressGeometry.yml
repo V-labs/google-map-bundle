@@ -1,6 +1,23 @@
 Vlabs\GoogleMapBundle\Entity\AddressGeometry:
     properties:
         address:
-            - NotBlank: ~
+            - NotNull:
+                groups: ['Default', 'Full']
         locationType:
-            - NotBlank: ~
+            - NotBlank:
+                groups: ['Default', 'Full']
+        location:
+            - Valid:
+                groups: ['Default', 'Full']
+            - NotNull:
+                groups: ['Default', 'Full']
+        bounds:
+            - Valid:
+                groups: ['Full']
+            - NotNull:
+                groups: ['Full']
+        viewport:
+            - Valid:
+                groups: ['Full']
+            - NotNull:
+                groups: ['Full']

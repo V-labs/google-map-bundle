@@ -2,7 +2,10 @@
 
 namespace Vlabs\GoogleMapBundle\Form\Type;
 
+use function is_null;
+use function iterator_to_array;
 use RecursiveIterator;
+use function sprintf;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\DataMapperInterface;
@@ -13,6 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vlabs\GoogleMapBundle\DataTransformer\ArrayToLatLngBoundsTransformer;
 use Vlabs\GoogleMapBundle\VO\LatLngBoundsVO;
 use Vlabs\GoogleMapBundle\VO\LatLngVO;
 
@@ -30,22 +34,18 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
     {
         $builder
             ->add('south', NumberType::class,[
-                'empty_data' => null,
                 'scale'      => 7,
                 'required'   => true
             ])
             ->add('west', NumberType::class,[
-                'empty_data' => null,
                 'scale'      => 7,
                 'required'   => true
             ])
             ->add('north', NumberType::class,[
-                'empty_data' => null,
                 'scale'      => 7,
                 'required'   => true
             ])
             ->add('east', NumberType::class,[
-                'empty_data' => null,
                 'scale'      => 7,
                 'required'   => true
             ])
@@ -60,6 +60,8 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
      */
     public function mapDataToForms($data, $forms)
     {
+        $forms = iterator_to_array($forms);
+
         if (null === $data) {
             return;
         }
@@ -68,7 +70,8 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
             throw new UnexpectedTypeException($data, LatLngBoundsVO::class);
         }
 
-        $forms = iterator_to_array($forms);
+        if($data->isEmpty()) return;
+
         $forms['south']->setData($data->getSouth());
         $forms['west']->setData($data->getWest());
         $forms['north']->setData($data->getNorth());
@@ -82,16 +85,15 @@ class LatLngBoundsVOType extends AbstractType implements DataMapperInterface
     public function mapFormsToData($forms, &$data)
     {
         $forms = iterator_to_array($forms);
+
         $data = new LatLngBoundsVO(
             $forms['south']->getData(),
             $forms['west']->getData(),
             $forms['north']->getData(),
             $forms['east']->getData()
         );
-
-        if($data->isEmpty()){
-            $data = null;
-        }
+        
+        if($data->isEmpty()) $data = null;
     }
 
     /**

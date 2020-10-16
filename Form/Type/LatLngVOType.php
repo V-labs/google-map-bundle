@@ -70,10 +70,6 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
             $forms['lat']->getData(),
             $forms['lng']->getData()
         );
-
-        if($data->isEmpty()){
-            $data = null;
-        }
     }
 
     /**

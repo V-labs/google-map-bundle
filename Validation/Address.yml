@@ -1,12 +1,17 @@
 Vlabs\GoogleMapBundle\Entity\Address:
     properties:
         placeId:
-            - NotBlank: ~
+            - NotBlank:
+                  groups: ['Default', 'Minimal', 'Full']
         formattedAddress:
-            - NotBlank: ~
+            - NotBlank:
+                  groups: ['Default', 'Minimal', 'Full']
         addressComponents:
-            - Valid: ~
+            - Valid:
+                  groups: ['Default', 'Full']
             - Count:
                 min: 1
+                groups: ['Default', 'Full']
         geometry:
-            - Valid: ~
+            - NotNull:
+                groups: ['Default','Full']

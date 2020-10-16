@@ -32,21 +32,22 @@ class AddressType extends AbstractType
                 'allow_add'     => true,
                 'allow_delete'  => true,
                 'by_reference'  => false,
-                'required'      => true
+                'required'      => false
             ])
-            ->add('place_id', TextType::class,[
+            ->add('place_id', TextType::class, [
                 'property_path' => 'placeId',
                 'required'      => true
             ])
-            ->add('types', CollectionType::class,[
+            ->add('types', CollectionType::class, [
                 'entry_type'    => TextType::class,
                 'allow_add'     => true,
                 'allow_delete'  => true,
                 'by_reference'  => true,
                 'required'      => true
             ])
-            ->add('geometry', AddressGeometryType::class,[
-                'required' => false
+            ->add('geometry', AddressGeometryType::class, [
+                'required' => false,
+                'error_bubbling' => false
             ])
         ;
     }
