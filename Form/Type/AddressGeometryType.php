@@ -2,6 +2,7 @@
 
 namespace Vlabs\GoogleMapBundle\Form\Type;
 
+use function array_key_exists;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -42,6 +43,34 @@ class AddressGeometryType extends AbstractType
                 'required' => false
             ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, [$this, 'onPreSubmit']);
+    }
+
+    /**
+     * @param FormEvent $event
+     */
+    public function onPreSubmit(FormEvent $event){
+        $form = $event->getForm();
+        $data = $event->getData();
+
+        if($data === null) return;
+
+        if(\is_iterable($data)){
+            if(array_key_exists('bounds', $data) && $data['bounds'] === ''){
+                $data['bounds'] = null;
+            }
+
+            if(array_key_exists('location', $data) && $data['location'] === ''){
+                $data['location'] = null;
+            }
+
+            if(array_key_exists('viewport', $data) && $data['viewport'] === ''){
+                $data['viewport'] = null;
+            }
+        }
+
+        $form = $event->setData($data);
     }
 
     /**

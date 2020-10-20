@@ -46,7 +46,7 @@ class AddressType extends AbstractType
                 'required'      => true
             ])
             ->add('geometry', AddressGeometryType::class, [
-                'required' => false,
+                'required'       => false,
                 'error_bubbling' => false
             ])
         ;
