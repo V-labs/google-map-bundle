@@ -1,6 +1,7 @@
 {
     "name": "vlabs/google-map-bundle",
     "license": "proprietary",
+    "version": "1.0.0",
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
