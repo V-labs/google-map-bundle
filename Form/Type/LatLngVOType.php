@@ -54,6 +54,8 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
             throw new UnexpectedTypeException($data, LatLngVO::class);
         }
 
+        if($data->isEmpty()) return;
+
         $forms = iterator_to_array($forms);
         $forms['lat']->setData($data->getLat());
         $forms['lng']->setData($data->getLng());
@@ -70,6 +72,8 @@ class LatLngVOType extends AbstractType implements DataMapperInterface
             $forms['lat']->getData(),
             $forms['lng']->getData()
         );
+
+        if($data->isEmpty()) $data = null;
     }
 
     /**

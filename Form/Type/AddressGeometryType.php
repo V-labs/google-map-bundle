@@ -34,7 +34,7 @@ class AddressGeometryType extends AbstractType
                 'required'      => true
             ])
             ->add('location', LatLngVOType::class, [
-                'required' => true
+                'required' => false
             ])
             ->add('viewport', LatLngBoundsVOType::class, [
                 'required' => false
